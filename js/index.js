@@ -10,12 +10,12 @@ let searchContainer = document.getElementById('searchContainer')
 let searchRow = document.getElementById('searchRow')
 
 
-let enterNameTouched = false;
-let enterEmailTouched = false;
-let enterYourPhoneTouched = false;
-let enterYourNumTouched = false;
-let enterYourPasswordTouched = false;
-let reenterYourPasswordTouched = false;
+// let enterNameTouched = false;
+// let enterEmailTouched = false;
+// let enterYourPhoneTouched = false;
+// let enterYourNumTouched = false;
+// let enterYourPasswordTouched = false;
+// let reenterYourPasswordTouched = false;
 
 
 jQuery(function () {
@@ -454,29 +454,29 @@ function inputsValidation() {
 }
 
 function nameValidation() {
-    return /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/.test(document.getElementById("enterName").value);
+    return /^[a-zA-Z ]+$/.test(document.getElementById("enterName").value);
 }
 
 function emailValidation() {
-    return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(
+    return /^(([^<>()[]\.,;:\s@"]+(.[^<>()[]\.,;:\s@"]+)*)|(".+"))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/.test(
         document.getElementById("enterEmail").value
     );
 }
 
 function phoneValidation() {
-    return /^[+]?[(]?[0-9]{3}[)]?[-\\s.]?[0-9]{3}[-\\s.]?[0-9]{4,6}$/.test(
+    return /^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/.test(
         document.getElementById("enterYourPhone").value
     );
 }
 
 function ageValidation() {
-    return /^(0?[1-9]|1[0-9]{1,2}|200)$/.test(
+    return /^(0?[1-9]|[1-9][0-9]|[1][1-9][1-9]|200)$/.test(
         document.getElementById("enterYourNum").value
     );
 }
 
 function passwordValidation() {
-    return /^(?=.*\\d)(?=.*[a-z])[0-9a-zA-Z]{8,}$/.test(
+    return /^(?=.\d)(?=.[a-z])[0-9a-zA-Z]{8,}$/.test(
         document.getElementById("enterYourPassword").value
     );
 }
