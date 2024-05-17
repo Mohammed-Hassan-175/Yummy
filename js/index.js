@@ -68,6 +68,7 @@ function showMeals(arr) {
         </div>`
         rowData.innerHTML = cartoona
     }
+    searchContainer.innerHTML="";
 }
 searchByName("");
 
@@ -101,6 +102,7 @@ function displayCategories(arr) {
          </div>`;
     }
     rowData.innerHTML = cartoona;
+    searchContainer.innerHTML="";
 }
 
 Area.addEventListener('click', function () {
@@ -131,6 +133,7 @@ function displayArea(arr) {
          </div>`;
     }
     rowData.innerHTML = cartoona;
+    searchContainer.innerHTML="";
 
 }
 
@@ -162,6 +165,8 @@ function displayIngredients(arr) {
          </div>`;
     }
     rowData.innerHTML = cartoona;
+    searchContainer.innerHTML="";
+
 }
 
 async function getCategoryMeal(e) {
@@ -192,8 +197,8 @@ async function getIngredientsMeal(z) {
 
 search.addEventListener('click', function () {
     closeNav();
-    searchContainer.innerHTML = `
-    <div id="searchRow" class="row py-4  ">
+    searchRow.innerHTML = `
+    
 
             <div class="col-md-6 placeholderwhite">
                 <input id="SearchByName" onkeyup="searchByName(this.value)" class=" bg-transparent form-control  text-white " type="text" placeholder="Search By Name"></input>
@@ -201,7 +206,7 @@ search.addEventListener('click', function () {
             <div class="col-md-6 placeholderwhite">
                 <input id="SearchByFirstLitter" onkeyup="SearchFirstLitter(this.value)" maxlength="1" class=" bg-transparent form-control text-white " type="text" placeholder="Search By First Litter"></input>
              </div>
-        </div>`
+       `
     rowData.innerHTML = "";
 
 })
@@ -221,6 +226,9 @@ async function searchByName(y) {
 async function SearchFirstLitter(y) {
     $(".sec-load-layer").fadeIn(300);
     closeNav()
+    if(y==''){
+        y = "s"
+    }
     let response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${y}`)
     response = await response.json()
     response.meals ? showMeals(response.meals) : showMeals([])
